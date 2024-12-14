@@ -32,9 +32,9 @@
 					<!-- 4. CHỈNH SỬA LỜI CHÚC CỦA BẠN TẠI ĐÂY-->
 			     <div class="text-content">
                     <span class="say">Chúc mừng sinh nhật pé</span><br>
-                    <span class="say">Mong em sẽ có đậu được trường em muốn vào</span><br>
+                    <span class="say">Mong em sẽ đỗ được trường em muốn vào</span><br>
                     <span class="say">Tuổi mới sẽ chín chắn hơn, ngày càng xinh hơn</span><br>
-                    <span class="say">Bớt thức khuya lại và dành thời gian nhiều học tập và bạn bè</span><br>
+                    <span class="say">Bớt đánh anh lại, và thương yêu anh nhiều hơn</span><br>
                     <span class="say">Chúc em tuổi 18 luôn xinh đẹp trong mắt ba mẹ và bạn bè</span><br>
                     <span class="say">Chúc em không bao giờ đánh anh nữa</span><br>
                     <span class="say">Chúc em sinh nhật vui vẻ.</span><br>
@@ -44,7 +44,7 @@
       </div>
                 </div>
                 <div id="clock-box">
-					<span class="STYLE1"> Thời gian đón tuổi mới</span>  <!--Có thể thay đổi chổ này thành số tuổi của người bạn muốn chúc -->
+					<span class="STYLE1">Đếm Ngược </span>  <!--Có thể thay đổi chổ này thành số tuổi của người bạn muốn chúc -->
                   <div id="clock">
 				  </div>
               </div>
@@ -181,21 +181,46 @@
                 $await(Jscex.Async.sleep(25));
             }
         }));
-
         var textAnimate = eval(Jscex.compile("async", function () {
-            var start_date = new Date(); // Ngày hiện tại
+            // Ngày mục tiêu: 2/1/2025 00:00 (GMT+7)
+            var targetDate = new Date(Date.UTC(2025, 0, 2, 0, 0, 0)); // Lưu ý: tháng 0 = tháng 1
+            targetDate.setHours(targetDate.getHours() - 7); // Chuyển sang múi giờ GMT+7
 
-            var year = 2005, month = 8, day = 1; // Ngày bạn muốn so sánh
-            var end_date = new Date(year, month - 1, day); // Lưu ý: Tháng trong JavaScript bắt đầu từ 0 (tháng 1 = 0).
+            function updateClock() {
+                var now = new Date(); // Lấy thời gian hiện tại
+                var diff = targetDate - now; // Khoảng cách thời gian còn lại (ms)
 
-            // Tính tổng số tháng đã trôi qua
-            var total_months = (start_date.getFullYear() - end_date.getFullYear()) * 12 
-                            + (start_date.getMonth() - end_date.getMonth());
-                console.log(total_months)
-                $("#code").show().typewriter();
-                $("#clock-box").fadeIn(500);
-                console.log(together)
-            }));
+                if (diff <= 0) {
+                    // Nếu đếm ngược kết thúc
+                    $("#clock").text("Thời gian đã hết!");
+                    clearInterval(timer); // Dừng đồng hồ
+                    return;
+                }
+
+                // Tính toán ngày, giờ, phút, giây
+                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                // Hiển thị đồng hồ
+                $("#clock").text(
+                    days + " ngày " + hours + " giờ " + minutes + " phút " + seconds + " giây"
+                );
+            }
+
+            // Gọi hàm cập nhật đồng hồ mỗi giây
+            var timer = setInterval(updateClock, 1000);
+
+            // Hiển thị hiệu ứng văn bản
+            $("#code").show().typewriter();
+            $("#clock-box").fadeIn(500);
+
+            // Gọi lần đầu tiên để hiển thị ngay lập tức
+            updateClock();
+        }));
+
+
 
         var runAsync = eval(Jscex.compile("async", function () {
             $await(seedAnimate());

@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/png" href="./img/CILKGax.png" />
-        <!-- 1. Tiêu đề của file index -->
-        <title>Happy birthday</title>
-        <link rel="stylesheet" href="./css/style.css" />
-    </head>
-    <body class="page__main">
-        <div class="buttons">
-            <!-- Chữ ở menu bạn có thể sửa lại theo ý của bạn -->
-            <a href="index.html" class="btn btn-bir">Sinh nhật</a>
-            <a href="timeline.html" class="btn btn-timeline">Dòng thời gian</a>
-            <a href="gallery/index.html" class="btn btn-gallery">Ảnh kĩ niệm</a>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./img/CILKGax.png" />
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <!-- 1. Tiêu đề của file index -->
+    <title>Happy birthday</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="page__main">
+    <div class="buttons">
+      <!-- Chữ ở menu bạn có thể sửa lại theo ý của bạn -->
+      <a href="index.html" class="btn btn-bir">Sinh nhật</a>
+      <a href="timeline.html" class="btn btn-timeline">Dòng thời gian</a>
+      <a href="gallery/index.html" class="btn btn-gallery">Ảnh kĩ niệm</a>
+    </div>
 
-        <!-- 2. Phần ảnh của người bạn mún chúc -->
-        <img src="./img/MyAvatar.jpg" alt="" class="cover" />
+    <!-- Example element -->
 
-        <!-- 3. Phần nhạc -->
-        <audio id="player" autoplay loop>
-            <source src="./music/music.mp3" type="audio/mp3" />
-        </audio>
-    </body>
+    <div class="cover">
+      <!-- 2. Phần ảnh của người bạn mún chúc -->
+      <img id="img" src="./img/MyAvatar.jpg" alt="" />
+    </div>
+
+    <!-- 3. Phần nhạc -->
+    <audio id="player" autoplay loop>
+      <source src="./music/music.mp3" type="audio/mp3" />
+    </audio>
+
+    <script>
+      // Số lượng ảnh
+      const totalImages = 6;
+
+      // Khởi tạo ảnh ban đầu
+      let currentImage = 1;
+
+      // Lặp thay đổi ảnh mỗi giây
+      setInterval(() => {
+        const imgElement = document.getElementById("img");
+
+        // Ẩn ảnh hiện tại bằng cách thêm class "hidden"
+        imgElement.classList.add("hidden");
+
+        // Sau khi ảnh cũ mờ đi (1s), thay đổi ảnh và hiển thị lại
+        setTimeout(() => {
+          currentImage = currentImage < totalImages ? currentImage + 1 : 1; // Nếu currentImage < 6 thì tăng lên 1, ngược lại reset về 1
+          imgElement.src = `./img/listAvatar/${currentImage}.jpg`; // Thay đổi đường dẫn ảnh
+          imgElement.classList.remove("hidden"); // Hiển thị ảnh mới
+        }, 1000); // 1000 ms = thời gian hiệu ứng mờ
+      }, 3000); // Mỗi 2 giây thay đổi ảnh (để hiệu ứng rõ ràng hơn)
+    </script>
+  </body>
 </html>
