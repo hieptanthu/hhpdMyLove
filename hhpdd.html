@@ -3,7 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Video Background Example</title>
+    <style>
+      #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        text-align: center;
+        padding: 50px;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <video autoplay loop muted id="background-video">
+      <source src="./video/banPhaoHoa.mp4" type="video/mp4" />
+    </video>
+
+    <div class="content">
+      <h1>Chào mừng em yêu tới tuổi 18</h1>
+    </div>
+
+    <script>
+      // Ẩn phần .content sau 3 giây
+      setTimeout(function () {
+        document.querySelector(".content").style.display = "none";
+      }, 3000); // 3000ms = 3 giây
+    </script>
+  </body>
 </html>

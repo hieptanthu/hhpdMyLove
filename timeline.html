@@ -183,7 +183,7 @@
         }));
         var textAnimate = eval(Jscex.compile("async", function () {
             // Ngày mục tiêu: 2/1/2025 00:00 (GMT+7)
-            var targetDate = new Date(Date.UTC(2025, 0, 2, 0, 0, 0)); // Lưu ý: tháng 0 = tháng 1
+            var targetDate = new Date(Date.UTC(2025, 0,2, 0, 0, 0)); // Lưu ý: tháng 0 = tháng 1
             targetDate.setHours(targetDate.getHours() - 7); // Chuyển sang múi giờ GMT+7
 
             function updateClock() {
@@ -194,6 +194,8 @@
                     // Nếu đếm ngược kết thúc
                     $("#clock").text("Thời gian đã hết!");
                     clearInterval(timer); // Dừng đồng hồ
+                    // Chuyển hướng đến một liên kết khi đếm ngược kết thúc
+                    window.location.href = "/hhpdd.html"; // Thay "https://your-link-here.com" bằng URL bạn muốn chuyển hướng
                     return;
                 }
 
