@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fullscreen YouTube Video Background</title>
+    <title>YouTube Video with Sound</title>
     <style>
       body {
         margin: 0;
-        overflow: hidden; /* Ẩn thanh cuộn */
+        overflow: hidden;
       }
 
       #background-video {
@@ -28,19 +28,41 @@
         font-size: 2rem;
         padding: 50px;
       }
+
+      .play-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    <!-- Nhúng video YouTube -->
     <iframe
       id="background-video"
-      src="https://www.youtube.com/embed/euutqwJE1Ds?autoplay=1&mute=1&loop=1&playlist=euutqwJE1Ds&start=82&controls=0&showinfo=0&modestbranding=1"
+      src="https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=0&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1"
       allow="autoplay; fullscreen"
       allowfullscreen
     ></iframe>
 
     <div class="content">
-      <h1>Chào mừng em yêu tới tuổi 18</h1>
+      <h1>Chào mừng tới video của bạn</h1>
     </div>
+
+    <!-- Nút phát -->
+    <button class="play-button" onclick="playVideo()">Phát video</button>
+
+    <script>
+      function playVideo() {
+        const iframe = document.getElementById("background-video");
+        iframe.src =
+          "https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=0&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1";
+      }
+    </script>
   </body>
 </html>
