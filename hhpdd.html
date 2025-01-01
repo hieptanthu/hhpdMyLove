@@ -8,6 +8,7 @@
       body {
         margin: 0;
         overflow: hidden;
+        height: 100%;
       }
 
       #background-video {
@@ -28,16 +29,30 @@
         font-size: 2rem;
         padding: 50px;
       }
+
+      .start-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 15px 30px;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+        z-index: 2;
+      }
     </style>
   </head>
   <body>
 
     <!-- Phần nhạc -->
-    <audio id="player" loop autoplay>
+    <audio id="player" loop>
       <source src="./hppd.mp3" type="audio/mp3" />
     </audio>
 
-    <!-- Nhúng video YouTube với autoplay và loop -->
+    <!-- Nhúng video YouTube -->
     <iframe
       id="background-video"
       src="https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=1&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1"
@@ -49,11 +64,30 @@
       <h1>Chào mừng em yêu tới tuổi 18</h1>
     </div>
 
+    <!-- Nút để bắt đầu video và âm thanh -->
+    <button class="start-button" onclick="startMedia()">Bắt đầu</button>
+
     <script>
+      // Hàm bắt đầu video và âm thanh sau khi người dùng tương tác
+      function startMedia() {
+        var audio = document.getElementById('player');
+        var iframe = document.getElementById('background-video');
+
+        // Phát âm thanh
+        audio.play();
+
+        // Bắt đầu video (không cần thêm code YouTube API, iframe sẽ tự động xử lý autoplay)
+        iframe.src = "https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=1&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1";
+
+        // Ẩn nút bắt đầu sau khi nhấn
+        document.querySelector(".start-button").style.display = "none";
+      }
+
       // Ẩn phần .content sau 3 giây
       setTimeout(function () {
         document.querySelector(".content").style.display = "none";
       }, 3000); // 3000ms = 3 giây
+      startMedia() 
     </script>
 
   </body>
