@@ -10,14 +10,7 @@
         overflow: hidden;
       }
 
-       /* Ẩn iframe video */
-      #background-adudio {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-        width: 1px;
-        height: 1px;
-      }
+     
 
       #background-video {
         position: fixed;
@@ -52,21 +45,7 @@
     </style>
   </head>
   <body>
-    <iframe
-      id="background-adudio"
-      src="https://www.youtube.com/embed/Ope8MY5zjGA?autoplay=1&loop=1&playlist=Ope8MY5zjGA&controls=0&showinfo=0&modestbranding=1"
-      allow="autoplay; fullscreen"
-      allowfullscreen
-    ></iframe>
-
-    <script>
-      // Khi trang được tải, video sẽ tự động phát âm thanh
-      window.onload = function () {
-        const iframe = document.getElementById("background-video");
-        iframe.src =
-          "https://www.youtube.com/embed/Ope8MY5zjGA?autoplay=1&loop=1&playlist=Ope8MY5zjGA&controls=0&showinfo=0&modestbranding=1";
-      };
-    </script>
+   
     <iframe
       id="background-video"
       src="https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=0&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1"
