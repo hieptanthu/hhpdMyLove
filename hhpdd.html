@@ -3,8 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video Background Example</title>
+    <title>Fullscreen YouTube Video Background</title>
     <style>
+      body {
+        margin: 0;
+        overflow: hidden; /* Ẩn thanh cuộn */
+      }
+
       #background-video {
         position: fixed;
         top: 0;
@@ -12,7 +17,7 @@
         width: 100vw;
         height: 100vh;
         z-index: -1;
-        pointer-events: none; /* Ngăn video cản trở tương tác với nội dung khác */
+        border: none;
       }
 
       .content {
@@ -20,6 +25,7 @@
         z-index: 1;
         color: white;
         text-align: center;
+        font-size: 2rem;
         padding: 50px;
       }
     </style>
@@ -28,8 +34,7 @@
     <!-- Nhúng video YouTube -->
     <iframe
       id="background-video"
-      src="https://www.youtube.com/embed/euutqwJE1Ds?autoplay=1&mute=1&loop=1&playlist=euutqwJE1Ds&start=82"
-      frameborder="0"
+      src="https://www.youtube.com/embed/euutqwJE1Ds?autoplay=1&mute=1&loop=1&playlist=euutqwJE1Ds&start=82&controls=0&showinfo=0&modestbranding=1"
       allow="autoplay; fullscreen"
       allowfullscreen
     ></iframe>
