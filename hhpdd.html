@@ -60,13 +60,17 @@
       <h1>Chào mừng em yêu tới tuổi 18</h1>
     </div>
 
-  \
-
     <script>
        // Ẩn phần .content sau 3 giây
         setTimeout(function () {
           document.querySelector(".content").style.display = "none";
         }, 3000); // 3000ms = 3 giây
+
+        // Tự động phát âm thanh khi trang web load
+        window.onload = function() {
+          var player = document.getElementById('player');
+          player.play(); // Phát âm thanh
+        };
     </script>
 
   </body>
