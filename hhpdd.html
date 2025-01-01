@@ -44,11 +44,12 @@
   </head>
   <body>
 
-    <!-- 3. Phần nhạc -->
-    <audio id="player" autoplay loop>
+    <!-- Phần nhạc -->
+    <audio id="player" loop>
       <source src="./hppd.mp3" type="audio/mp3" />
     </audio>
-    <!-- Nhúng video YouTube và tự động phát khi trang được tải -->
+
+    <!-- Nhúng video YouTube -->
     <iframe
       id="background-video"
       src="https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=1&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1"
@@ -61,10 +62,28 @@
     </div>
 
     <script>
-      // Ẩn phần .content sau 3 giây
-      setTimeout(function () {
+      window.onload = function() {
+        // Tự động phát video
+        var iframe = document.getElementById('background-video');
+        var audio = document.getElementById('player');
+        
+        // Bắt đầu phát âm thanh sau khi trang tải xong
+        audio.play();
+        
+        // Xử lý tự động phát video YouTube
+        var player = new YT.Player(iframe, {
+          events: {
+            'onReady': function(event) {
+              event.target.playVideo();
+            }
+          }
+        });
+      };
+        setTimeout(function () {
         document.querySelector(".content").style.display = "none";
       }, 3000); // 3000ms = 3 giây
     </script>
+
+
   </body>
 </html>
