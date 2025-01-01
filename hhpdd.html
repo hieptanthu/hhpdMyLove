@@ -52,41 +52,21 @@
       <source src="./hppd.mp3" type="audio/mp3" />
     </audio>
 
-    <!-- Nhúng video YouTube -->
-    <iframe
-      id="background-video"
-      src="https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=1&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1"
-      allow="autoplay; fullscreen"
-      allowfullscreen
-    ></iframe>
+    <video autoplay loop muted id="background-video">
+      <source src="./video/banPhaoHoa.mp4" type="video/mp4" />
+    </video>
 
     <div class="content">
       <h1>Chào mừng em yêu tới tuổi 18</h1>
     </div>
 
-    <!-- Nút để bắt đầu video và âm thanh -->
-    <button class="start-button" onclick="startMedia()">Bắt đầu</button>
+  \
 
     <script>
-      // Hàm bắt đầu video và âm thanh sau khi người dùng tương tác
-      function startMedia() {
-        var audio = document.getElementById('player');
-        var iframe = document.getElementById('background-video');
-
-        // Phát âm thanh
-        audio.play();
-
-        // Bắt đầu video (không cần thêm code YouTube API, iframe sẽ tự động xử lý autoplay)
-        iframe.src = "https://www.youtube.com/embed/w9sbPZEB2HY?autoplay=1&loop=1&playlist=w9sbPZEB2HY&controls=0&showinfo=0&modestbranding=1";
-
-        // Ẩn nút bắt đầu sau khi nhấn
-        document.querySelector(".start-button").style.display = "none";
-        
-        // Ẩn phần .content sau 3 giây
+       // Ẩn phần .content sau 3 giây
         setTimeout(function () {
           document.querySelector(".content").style.display = "none";
         }, 3000); // 3000ms = 3 giây
-      }
     </script>
 
   </body>
