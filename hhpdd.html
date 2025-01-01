@@ -81,13 +81,12 @@
 
         // Ẩn nút bắt đầu sau khi nhấn
         document.querySelector(".start-button").style.display = "none";
+        
+        // Ẩn phần .content sau 3 giây
+        setTimeout(function () {
+          document.querySelector(".content").style.display = "none";
+        }, 3000); // 3000ms = 3 giây
       }
-
-      // Ẩn phần .content sau 3 giây
-      setTimeout(function () {
-        document.querySelector(".content").style.display = "none";
-      }, 3000); // 3000ms = 3 giây
-      startMedia() 
     </script>
 
   </body>
